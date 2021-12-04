@@ -1,7 +1,7 @@
 # Lecture 1
 
 ## Goal 
-- Use `git` to clone this private repository
+- Use `git` to interact with this repository
 - 
 
 ## Introduction to Git
@@ -48,8 +48,14 @@
   - Remote repository
     - why do we need a remote repository?
     - create a github account
-  
-    
+    - go to [Python Preprogram repo](https://github.com/FranktheTank123/UCB-MFE-python-preprogram)
+    - clone the repo: `https://github.com/FranktheTank123/UCB-MFE-python-preprogram.git`
+    - how to constantly keep up-to-date?
+      - Do `git pull origin main` frequently
+  - Pull request 
+    - [Why do we need a pull request?](https://co-learning.eu/2017/10/04/why-and-how-do-we-use-pull-request/)
+    - create a branch and make some changes
+    - push that branch to remote: 
     
 
 ## Introduction to Anaconda 
