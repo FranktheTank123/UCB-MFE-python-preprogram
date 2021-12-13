@@ -1,6 +1,7 @@
 
+import copy
+
 def evolve(initial_state):
-    import copy
     next_state = copy.deepcopy(initial_state)
     for i, row in enumerate(initial_state):
         for j, item in enumerate(row):
