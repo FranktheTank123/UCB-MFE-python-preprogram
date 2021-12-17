@@ -1,0 +1,9 @@
+Ziling Zhang, Ender's Game
+
+
+conda create -n HW1 python=3.10
+conda activate HW1
+pip install -r requirements.txt
+pip install requests==2.24.0
+pip install requests -U
+# The latest version of requests is 2.26.0
