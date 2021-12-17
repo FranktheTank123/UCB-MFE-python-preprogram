@@ -1,0 +1,10 @@
+JUAN MORA, LION KING 3
+
+conda create -n HW1 python=3.10
+conda activate HW1
+cd '.\UCB\Pre-MFE 2022\Python\UCB-MFE-python-preprogram\Homeworks\HW1'
+pip install -r .\requirements.txt
+pip install requests==2.24.0
+pip install requests -U
+pip list
+What's the latest version of requests? 2.26.0

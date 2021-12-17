@@ -1,0 +1,9 @@
+JIUYUE ZHOU, Flipped
+
+conda create -n HW1 python=3.10
+conda activate HW1
+pip install -r requirements
+pip install requests==2.24.0
+pip install --upgrade requests
+
+The lastest version of requests is 2.26.0
