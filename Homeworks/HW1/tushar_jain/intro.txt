@@ -1,0 +1,6 @@
+Tushar Jain, The Lion King
+conda create --name HW1 python=3.10
+pip install -r Homeworks/HW1/requirements.txt
+pip install requests==2.24.0
+pip install requests -U
+#2.26.0
