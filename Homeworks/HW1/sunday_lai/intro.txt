@@ -1,9 +1,0 @@
-Sunday Lai, Harry Potter
-
-Anaconda:
-conda create -n HW1 python=3.10
-conda activate HW1
-pip install -r /Users/sundaylai/test/git-intro/UCB-MFE-python-preprogram/Homeworks/HW1/requirements.txt
-pip install requests==2.24.0
-pip install requests -U
-Latest version of requests: requests-2.26.0
