@@ -1,0 +1,8 @@
+Mingfeng Yang, 007
+
+conda create -n HW1 python=3.10
+pip install -r Homeworks/HW1/requiremeents.txt
+pip install requests==2.24.0
+pip install requests -U
+
+The latest version of requests is 2.26.0
