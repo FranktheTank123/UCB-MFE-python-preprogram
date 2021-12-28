@@ -1,0 +1,30 @@
+
+def evolve(board):
+    #Define the direction of eight positions
+    neighbors = [[1, 0], [1, -1], [0, -1], [-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1]]
+    #Get board rows and columns
+    rowNum = len(board)
+    colsNum = len(board[0])
+    #Copy a copy of data from board to boardcopy
+    boardCopy = [[board[row][col] for col in range(colsNum)] for row in range(rowNum)]
+    # Traverse the cells in each board
+    for row in range(rowNum):
+        for col in range(colsNum):
+            # For each cell, count the number of living cells in its eight adjacent positions
+            liveNeighbors = 0
+            for neighbor in neighbors:
+                r = (row + neighbor[0])
+                c = (col + neighbor[1])
+                # Check whether the adjacent cells are living cells
+                if (r < rowNum and r >= 0) and (c < colsNum and c >= 0) and (boardCopy[r][c] == 1):
+                    liveNeighbors += 1
+            # Rule 1 or rule 3 if the current cell is alive and the survival number of its adjacent cells is less than 2 or greater than 3, set the current cell to dead
+            if boardCopy[row][col] == 1 and (liveNeighbors < 2 or liveNeighbors > 3):
+                board[row][col] = 0
+            # Rule 4 if the current cell is dead and three adjacent cells are alive, then the cell is alive
+            if boardCopy[row][col] == 0 and liveNeighbors == 3:
+                board[row][col] = 1
+    return board
+
+print(evolve([[0,1,0],[0,0,1],[1,1,1],[0,0,0]])) #[[0, 0, 0], [1, 0, 1], [0, 1, 1], [0, 1, 0]]
+print(evolve( [[1,1],[1,0]]))#[[1, 1], [1, 1]]
