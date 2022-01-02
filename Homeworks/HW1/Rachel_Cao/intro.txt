@@ -1,0 +1,34 @@
+Rachel Cao, Blades of Glory
+# Comedy movies are fun to watch :)
+#
+# Write the command you used to create a virtual environment called HW1 with Python 3.10
+#
+#
+To create an envronment that is called HW1 with a specific python version:
+1. Download Anaconda as a package and environment manager
+2. Create the environment using conda the command is 
+
+> conda create -n HW1 python==3.10
+
+3. To install packages that are listed in a .txt file
+
+> pip install -r requirements.txt
+
+or if there is a different file directory use the entire path that the requirements file is located
+
+> pip install -r /Users/Rachel/git-intro/UCB-MFE-python-preprogram/Homework/requirements.txt
+
+4. To change the version of the requests package, use the command:
+
+> pip install requests==2.24.0
+
+check that the change is proper with the command:
+> pip list
+
+5. To upgrade the version of the requests package to the latest version:
+
+> pip install requests -U
+
+6. The latest version of requests package, as of 12/12/2021 is 
+>pip list
+requests	2.26.0 
