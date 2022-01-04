@@ -1,0 +1,216 @@
+# Lecture 1
+
+## Goal 
+- Use `git` to interact with this repository
+- Use `conda` to manage python environment
+- Familiar with basic Python syntax
+
+## Introduction to Git
+- [What Is Git & Why Should You Use It?](https://www.nobledesktop.com/blog/what-is-git-and-why-should-you-use-it)
+    - Git is a version control system
+    -  ![](https://www.nobledesktop.com/image/blog/git-branches-merge.png)
+    - Ways to use git
+      - command line interface (CLI)
+      - desktop graphic user interface (GUI), such as [Sourcetree](https://www.sourcetreeapp.com/)
+    - Local Repository
+      - Folder-based, with a `.git` subfolder tracking the changes.
+    - Remote Repository
+      - ![](https://www.nobledesktop.com/image/blog/git-distributed-workflow-diagram.png)
+- [Installation](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- Basic concepts & commands
+  - Create a git repository
+    - create a folder: `mkdir git-intro`
+    - go inside the folder `cd git-intro`
+    - initialize git: `git init`
+  - make a commit
+    - create a file: `touch file1.txt`
+    - check status: `git status`
+      - staged file vs. unstaged file
+    - stage a file: `git add file1.txt`
+    - check status: `git status`
+    - commit a change: `git commit -m 'add file1.txt'`
+    - check status: `git status`
+    - check Sourcetree history
+  - make another commit
+    - add a line in `file1.txt`
+    - `git status` and `git diff` (and GUI visualization)
+    - `git add .` and `git commit -m 'hello world'`
+  - create a branch
+    - why can't we just iterate on `master`?
+    - `git checkout -b branch_1`
+    - switching between branches: `git checkout master`
+    - create a commit on a branch
+    - merge into master
+      - `git checkout master`
+      - `git merge branch_1`
+      - explain via Sourcetree
+    - create a commit on both master and branch
+    - create a conflict commit on both master and branch
+  - Remote repository
+    - why do we need a remote repository?
+    - create a github account
+    - go to [Python Preprogram repo](https://github.com/FranktheTank123/UCB-MFE-python-preprogram)
+    - clone the repo: `https://github.com/FranktheTank123/UCB-MFE-python-preprogram.git`
+    - how to constantly keep up-to-date?
+      - Do `git pull origin main` frequently
+  - Pull request 
+    - [Why do we need a pull request?](https://co-learning.eu/2017/10/04/why-and-how-do-we-use-pull-request/)
+    - things you need to do for pull request
+      - create a branch and make some changes 
+      - push that branch to remote: `git push --set-upstream origin <branch_name>`
+      - branch naming practice
+          - `hw_<hw_number>_<firstname>_<lastname>`, e.g.: `hw_1_frank_xia`
+      - create a pull request
+      - assign reviewers
+      - merge pull request
+
+## Introduction to Anaconda 
+- [Python versions](https://www.python.org/doc/versions/)
+  - python keeps releasing new versions 
+  - projects are motivated to use the latest python version at the time of creation.
+  - we might end up having N projects running N different python versions
+  - ... while there is only 1 python version installed on laptop 
+  - ... even you managed to install different python versions, package requirement (e.g. `pandas` version) could varies project by project.
+  - So in industry, we commonly use virtual environment to manage python versions and dependencies across projects  
+- Virtual environment
+  - a lot of choices (`venv`, `pipenv`, `conda`, `poetry`, etc.) and they are all great. It really depends on what a company chooses to offer.
+  - here we choose `Conda` as
+    - more data science friendly
+    - it can manage other programming languages, such as R, C/C++, Ruby, Scala, etc.
+- Download and install [Anaconda](https://www.anaconda.com/products/individual) (sometimes company chooses [`Miniconda`](https://docs.conda.io/en/latest/miniconda.html))
+- Working with virtual env
+  - creation: `conda create -n lecture_1 python=3.10`
+  - check python version difference
+    - global python: `python -V` or `which python`
+    - local python: `conda activate lecture_1`, and repeat the 2 command above
+  - deactivate: `conda deactivate`
+  - list of all env: `conda env list`
+  - list of the package installed in an env: `conda list -n lecture_1`
+- install packages
+    - **Python is very famous of its abundance of libraries.** Almost anything has a python library.
+    - https://pypi.org/
+    - [pip](https://realpython.com/what-is-pip/) is a very common way to install/unisntall/upgrade package
+      - `pip install requests` (if `requests` is not installed, install the latest version. Otherwise, do nothing)
+      - `pip install requests==1.20` (define a specific version to install)
+      - `pip install requests -U` (make sure `requests` is installed as the latest version)
+    - Package management in the wild:
+      - Case study: [pandas](https://github.com/pandas-dev/pandas)
+        - all dependencies are defined in [`requirements-dev.txt`](https://github.com/pandas-dev/pandas/blob/master/requirements-dev.txt) 
+        - pin-ed version vs. un-pin-ed version
+      - Build our own requirements list
+        - create a file called `requiremenets.txt`
+        - add 3 lines of:
+          - `requests`
+          - `numpy`
+          - `pandas`
+        - `pip install -r requiremenets.txt`
+        - check with `pip list`
+- helpful readings
+    - https://www.geeksforgeeks.org/important-differences-between-python-2-x-and-python-3-x-with-examples/
+    - https://realpython.com/effective-python-environment/
+    - https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c/
+    - https://www.section.io/engineering-education/introduction-to-virtual-environments-and-dependency-managers/
+    - https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#creating-an-environment-with-commands
+
+
+## Basic Python
+- Python is a scripting language
+  - vs. compiled language (e.g., Java, C/C++)
+- interactive shell
+  - just type `python`
+- execute a script
+  - `python <FILE_NAME.py>`
+- Write your first program
+  - print "hello world" (and let's mess things up a bit)
+    - `print` function
+  - assign variables & inspect values
+  - write comments
+- For loops
+```
+for i in range(10):
+    print(i)
+```
+  - Indentation  
+  - `i`'s value
+  - `range` function
+    - `range(10)`
+    - `range(1, 10)`
+    - `range(1, 10, 3)`
+    - `range(9,2,-1)`
+- String
+  - `type("Hello, World")`
+  - `'` vs `"` vs `"""` vs `'''`
+  - `len`
+  - concatenation, indexing and slicing
+  - you cannot edit a string
+  - string method
+    - lower
+    - upper
+    - replace
+    - strip, rstrip, lstrip
+    - startswith, endswith
+    - split
+    - casting
+    - string formatting `f` (Python 3.6+), or `"{}".format()`
+- Numbers
+  - int vs float
+    - auto-casting
+      - `2/1`
+      - `2.0/1`
+      - `3/2`
+  - operator
+    - `+ - * / ** // %`
+- Booleans
+  - True / False
+- If statement
+  - if, if/else, if/elif/else
+  - `==`, `!=`, `in`, `not in`, `is`, `>`, `>=`, `<`, '<='
+- List
+  - creating a list
+  - empty list
+  - data type in list
+  - lists are very similar to strings
+    - `len`
+    - `in`
+    - slicing
+    - looping
+    - addition
+  - strings are immutable but lists are!
+  - useful list methods
+    - `append`
+    - `extend`
+    - `sort`
+    - `pop`
+  - list comprehension
+    - (expand here)
+  - list of list
+- Tuples
+  - immutable list
+- While loops
+    - for-loop equivalent
+    - infinite loop
+    - `break` and `continue`
+- Dictionaries (or Maps)
+  - create a dict
+  - empty dict
+  - access and iteration
+  - efficiency vs. List
+- Sets
+  - unordered unique list
+  - create a set
+  - `{}` is an empty `dict`
+  - access, iteration
+  - efficiency
+- Functions
+  - syntax
+  - argument
+    - no argument
+    - argument sequence
+    - default arguments
+    - keyword arguments
+  - local variable
+- Classes
+  - declaration & initialization
+  - inheritance
+- helpful readings
+  - https://realpython.com/interacting-with-python/

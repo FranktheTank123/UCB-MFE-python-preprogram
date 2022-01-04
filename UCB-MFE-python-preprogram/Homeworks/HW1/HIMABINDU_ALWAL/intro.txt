@@ -1,0 +1,12 @@
+Hima Bindu Alwal, Shawshank Redemption
+
+conda create -n HW1  python=3.10
+pip install -r .\Homeworks\HW1\requirements.txt
+pip list (2.25)
+pip install requests==2.24
+pip list (2.24)
+# Install latest version of requests
+pip install requests
+# What is the latest version
+pip list (2.24)
+

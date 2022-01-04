@@ -1,0 +1,8 @@
+Hakan Serpen, Inception
+
+conda create -n HW1 python=3.10
+activate HW1
+pip install -r requirements.txt --user
+pip install requests==2.24.0
+pip install requests --upgrade
+Latest Version: 2.26.0
