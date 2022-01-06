@@ -7,6 +7,7 @@ on:
   pull_request:
     paths:
       - '!*'
+#      - '**'
 jobs:
   step-1:
     runs-on: ubuntu-latest  # https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idruns-on

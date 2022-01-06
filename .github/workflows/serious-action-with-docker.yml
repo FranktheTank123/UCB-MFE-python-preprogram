@@ -6,8 +6,8 @@ on:
       - '!*'
   pull_request:
     paths:
-      - '!*'
-#      - 'Lectures/Lecture 6/**'
+#      - '!*'
+      - 'Lectures/Lecture 6/**'
 jobs:
   lint-test:
     runs-on: ubuntu-latest
@@ -24,8 +24,8 @@ jobs:
       - name: lint check with docker
         run: |
           cd Lectures/Lecture\ 6
-          docker build . -t test
-          docker run  test make lint-check
+          docker build . -t test-on-github
+          docker run  test-on-github make lint-check
 
   unit-test:
     runs-on: ubuntu-latest
@@ -37,8 +37,8 @@ jobs:
       - name: lint check with docker
         run: |
           cd Lectures/Lecture\ 6
-          docker build . -t test
-          docker run  test make test
+          docker build . -t test-on-github
+          docker run  test-on-github make test
 
   deploy:
     runs-on: ubuntu-latest

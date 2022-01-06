@@ -9,7 +9,7 @@ clean-pyc: ## removes pyc files from your local directory
 install:
 	conda create -n lecture_5 python=3.10 --yes
 	source activate lecture_5
-	echo Run "source activate lecture_5" activate the conda environment
+	echo 'Run "source activate lecture_5" activate the conda environment'
 
 test:
 	flake8 code/lint/flake8.py
