@@ -1,3 +1,6 @@
+import pytest
+
+
 def evolve(initial_state):
     rows = len(initial_state)
     cols = len(initial_state[0])
@@ -54,9 +57,9 @@ test_case_2_next = [
 ]
 
 
-def test_1():
-    assert evolve(test_case_1) == test_case_1
-
-
-def test_2():
-    assert evolve(test_case_2) == test_case_2_next
+@pytest.mark.parametrize(
+    ("inputs", "expected"),
+    [(test_case_1, test_case_1), (test_case_2, test_case_2_next)],
+)
+def test_cases(inputs, expected):
+    assert evolve(inputs) == expected
