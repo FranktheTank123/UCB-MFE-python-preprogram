@@ -1,7 +1,7 @@
 lint:
-	black test.py
-	isort test.py
-	flake8 test.py
+	black test_game_of_life.py
+	isort test_game_of_life.py
+	flake8 test_game_of_life.py
 
 test:
 	pytest .
