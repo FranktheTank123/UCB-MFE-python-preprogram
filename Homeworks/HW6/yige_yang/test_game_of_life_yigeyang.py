@@ -8,21 +8,21 @@ def evolve(initial_state):
     for i in range(0, row_length):
         for j in range(0, col_length):
             qualified = []
-            if (i - 1 >= 0):
+            if i - 1 >= 0:
                 qualified.append([i - 1, j])
-            if (j - 1 >= 0):
+            if j - 1 >= 0:
                 qualified.append([i, j - 1])
-            if (j + 1 < col_length):
+            if j + 1 < col_length:
                 qualified.append([i, j + 1])
-            if (i + 1 < row_length):
+            if i + 1 < row_length:
                 qualified.append([i + 1, j])
-            if ((i - 1 >= 0) & (j - 1 >= 0)):
+            if (i - 1 >= 0) & (j - 1 >= 0):
                 qualified.append([i - 1, j - 1])
-            if ((i - 1 >= 0) & (j + 1 < col_length)):
+            if (i - 1 >= 0) & (j + 1 < col_length):
                 qualified.append([i - 1, j + 1])
-            if ((i + 1 < row_length) & (j - 1 >= 0)):
+            if (i + 1 < row_length) & (j - 1 >= 0):
                 qualified.append([i + 1, j - 1])
-            if ((i + 1 < row_length) & (j + 1 < col_length)):
+            if (i + 1 < row_length) & (j + 1 < col_length):
                 qualified.append([i + 1, j + 1])
             sum = 0
             for each in qualified:
