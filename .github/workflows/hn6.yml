@@ -2,7 +2,7 @@ name: HW6
 on:
   pull_request:
     paths:
-      - 'Homeworks/HW6/**'
+      - 'Homeworks/HW6/Tarek_Mohammad'
 jobs:
   test:
     runs-on: ubuntu-latest
