@@ -1,15 +1,18 @@
-import pytest
-
-
 def evolve(initial_state):
-    l = len(initial_state)
+    length = len(initial_state)
     ans = []
 
-    for i in range(l):
+    for i in range(length):
         ans1 = []
-        for j in range(l):
-            neigh = initial_state[max(0, i - 1) : min(l, i + 2)]
-            neigh = list(map(lambda x: x[max(0, j - 1) : min(l, j + 2)], neigh))
+        for j in range(length):
+            min_r = max(0, i - 1)
+            max_r = min(length, i + 2)
+            neigh = initial_state[min_r:max_r]
+
+            min_c = max(0, j - 1)
+            max_c = min(length, j + 2)
+            neigh = map(lambda x: x[min_c:max_c], neigh)
+            neigh = list(neigh)
             neighbors = []
             for p in neigh:
                 neighbors.extend(p)
@@ -50,8 +53,6 @@ test_case_2_next = [
 ]
 
 
-@pytest.mark.parametrize(
-    "test_input,expected", [(test_case_1, test_case_1), (test_case_2, test_case_2_next)]
-)
-def test_evolve(test_input, expected):
-    assert evolve(test_input) == expected
+def test_evolve():
+    assert evolve(test_case_1) == test_case_1
+    assert evolve(test_case_2) == test_case_2_next
