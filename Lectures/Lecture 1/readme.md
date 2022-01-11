@@ -55,13 +55,14 @@
       - Do `git pull origin main` frequently
   - Pull request 
     - [Why do we need a pull request?](https://co-learning.eu/2017/10/04/why-and-how-do-we-use-pull-request/)
-    - create a branch and make some changes
-    - branch naming practice
-        - `hw_<hw_number>_<firstname>_<lastname>`, e.g.: `hw_1_frank_xia`
-    - push that branch to remote: `git push --set-upstream origin <branch_name>`
-    - create a pull request
-    - assign reviewers
-    - merge pull request
+    - things you need to do for pull request
+      - create a branch and make some changes 
+      - push that branch to remote: `git push --set-upstream origin <branch_name>`
+      - branch naming practice
+          - `hw_<hw_number>_<firstname>_<lastname>`, e.g.: `hw_1_frank_xia`
+      - create a pull request
+      - assign reviewers
+      - merge pull request
 
 ## Introduction to Anaconda 
 - [Python versions](https://www.python.org/doc/versions/)
@@ -213,4 +214,3 @@ for i in range(10):
   - inheritance
 - helpful readings
   - https://realpython.com/interacting-with-python/
-

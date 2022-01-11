@@ -1,0 +1,9 @@
+hong wang, schindler's list
+
+conda create -n HW1 python=3.10
+cd /Homeworks/HW1/
+pip install -r requirements.txt
+pip install requests==2.24.0
+pip install requests
+
+Latest version of requests is 
