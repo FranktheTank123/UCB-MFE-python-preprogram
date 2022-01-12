@@ -3,7 +3,7 @@ FROM python:3.10.1-slim-buster
 
 WORKDIR /temp
 
-COPY ruoyu_lin .
+COPY code .
 
 RUN apt-get update && apt-get -y install make
 RUN pip install --upgrade pip
