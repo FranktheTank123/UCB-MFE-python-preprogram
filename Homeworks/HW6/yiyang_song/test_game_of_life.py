@@ -44,6 +44,6 @@ test_case_2_next = [
 ]
 
 
-def test_cases():
+def test_all_cases():
     assert evolve(test_case_1) == test_case_1
     assert evolve(test_case_2) == test_case_2_next
