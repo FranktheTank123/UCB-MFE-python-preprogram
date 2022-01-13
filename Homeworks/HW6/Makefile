@@ -1,10 +1,10 @@
 lint:
-	black Alvin_Yu/test_game_of_life.py
-	isort Alvin_Yu/test_game_of_life.py
-	flake8 Alvin_Yu/test_game_of_life.py
+	black test.py
+	isort test.py
+	flake8 test.py
 
 test:
-	pytest Alvin_Yu/test_game_of_life.py
+	pytest .
 
 lint-check:
 	black . --check
