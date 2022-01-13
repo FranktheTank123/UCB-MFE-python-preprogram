@@ -1,4 +1,3 @@
-import pytest
 
 def evolve(initial_state):
     n=len(initial_state)
@@ -71,12 +70,7 @@ test_case_2_next = [
     [0, 0, 0, 0, 0],
 ]
 
-@pytest.mark.parametrize(
-    "input,output",
-    [
-        (test_case_1, test_case_1),
-        (test_case_2, test_case_2_next),
-    ],
-)
-def test_evolve(input, output):
-    assert evolve(input) == output
+
+def test():
+    evolve(test_case_1)==test_case_1
+    evolve(test_case_2)==test_case_2_next
