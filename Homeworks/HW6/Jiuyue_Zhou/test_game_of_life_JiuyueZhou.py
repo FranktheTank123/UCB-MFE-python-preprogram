@@ -1,6 +1,3 @@
-import pytest
-
-
 def evolve(initial_state):
     out = []
     n_row, n_col = len(initial_state), len(initial_state[0])
@@ -22,36 +19,30 @@ def evolve(initial_state):
     return out
 
 
-test_case_1 = [
-    [0, 0, 0, 0],
-    [0, 1, 1, 0],
-    [0, 1, 1, 0],
-    [0, 0, 0, 0],
-]
+def test_evolve():
 
-test_case_2 = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 1, 0, 0],
-    [0, 0, 0, 0, 0],
-]
+    test_case_1 = [
+        [0, 0, 0, 0],
+        [0, 1, 1, 0],
+        [0, 1, 1, 0],
+        [0, 0, 0, 0],
+    ]
 
-test_case_2_next = [
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-    [0, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0],
-]
+    test_case_2 = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 1, 0, 0],
+        [0, 0, 0, 0, 0],
+    ]
 
+    test_case_2_next = [
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 1, 1, 1, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+    ]
 
-@pytest.mark.parametrize(
-    "input_state, output_state",
-    [
-        (test_case_1, test_case_1),
-        (test_case_2, test_case_2_next),
-    ],
-)
-def test_evolve(input_state: list, output_state: list):
-    assert evolve(input_state) == output_state
+    assert evolve(test_case_1) == test_case_1
+    assert evolve(test_case_2) == test_case_2_next
