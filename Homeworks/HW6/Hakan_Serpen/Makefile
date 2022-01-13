@@ -8,5 +8,5 @@ test:
 
 lint-check:
 	black . --check
-	isort . --check
+	isort test_game_of_life.py --check
 	flake8 .
