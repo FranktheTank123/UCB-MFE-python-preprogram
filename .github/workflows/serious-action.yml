@@ -1,0 +1,54 @@
+name: Serious Actions
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '!*'
+  pull_request:
+    paths:
+      - '!*'
+#      - 'Lectures/Lecture 6/code/**'
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2  # https://github.com/actions/checkout
+
+      - name: install python
+        uses: actions/setup-python@v2  # https://github.com/actions/setup-python
+        with:
+          python-version: '3.10'  # this is aligned with Lecture 5
+
+      - name: install dependency
+        run: cd Lectures/Lecture\ 6/code && pip install -r requiremenets.txt
+
+      - name: Lint check
+        # note that `pwd` gets reset each time
+        run: cd Lectures/Lecture\ 6/code && make lint-check
+
+  unit-test:
+    runs-on: ubuntu-latest
+    needs: [lint-test]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2  # https://github.com/actions/checkout
+
+      - name: install python
+        uses: actions/setup-python@v2  # https://github.com/actions/setup-python
+        with:
+          python-version: '3.10'  # this is aligned with Lecture 5
+
+      - name: install dependency
+        run: cd Lectures/Lecture\ 6/code && pip install -r requiremenets.txt
+
+      - name: unit test
+        # note that `pwd` gets reset each time
+        run: cd Lectures/Lecture\ 6/code && make test
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [lint-test, unit-test]
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    steps:
+        - run: echo "deploy!"
+
