@@ -1,7 +1,7 @@
 lint:
-	black test_game_of_life.py
-	isort test_game_of_life.py
-	flake8 test_game_of_life.py
+	black test_game_of_life_qiyue_ren.py
+	isort test_game_of_life_qiyue_ren.py
+	flake8 test_game_of_life_qiyue_ren.py
 
 
 lint-check:
