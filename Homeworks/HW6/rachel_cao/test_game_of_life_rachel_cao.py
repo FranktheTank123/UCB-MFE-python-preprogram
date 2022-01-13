@@ -43,7 +43,7 @@ def evolve(initial_state):
                 if (board[i][j] == 1) and neighbors == 3:
                     nextgen[i][j] = 1  # two or three neighbors lives on
 
-                if board[i][j] == 1 and neighbors not in [2, 3]:
+                if board[i][j] == 1 and neighbors not in (2, 3):
                     nextgen[i][j] = 0  # stagnation
 
             except IndexError:
