@@ -42,10 +42,6 @@ test_case_2_next = [
 ]
 
 
-# assert evolve(test_case_1) == test_case_1
-# assert evolve(test_case_2) == test_case_2_next
-
-
 def test_1():
     assert evolve(test_case_1) == test_case_1
     pass
@@ -54,3 +50,6 @@ def test_1():
 def test_2():
     assert evolve(test_case_2) == test_case_2_next
     pass
+
+# assert evolve(test_case_1) == test_case_1
+# assert evolve(test_case_2) == test_case_2_next
