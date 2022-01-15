@@ -1,0 +1,10 @@
+Daisy Dai, Vertigo 
+
+conda create -n HW1 python=3.10
+conda activate HW1
+pip install -r Homeworks/HW1/requirements.txt
+pip install requests==2.24.0
+pip install requests -U 
+latest version: 2.26.0
+
+

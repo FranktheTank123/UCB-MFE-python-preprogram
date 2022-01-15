@@ -1,0 +1,17 @@
+BASTIEN GROS, FORREST GUMP
+
+#Create a virtual environment called HW1 with Python 3.10
+conda create -n HW1 python=3.10
+y
+
+#Install the package with the requirement file in Homeworks/HW1/requirements.txt
+pip install -r requirements.txt
+
+#Downgrade the requests library to version to 2.24.0
+pip install requests==2.24
+
+#Upgrade the requests library to the latest
+pip install requests -U
+
+#What's the latest version of requests?
+The latest version is 2.26.0
