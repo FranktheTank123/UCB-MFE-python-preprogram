@@ -1,9 +1,3 @@
-lint-check:
-	black . --check
-	isort . --check
-	flake8 .
-
-
 lint:
 	black test_game_of_life.py
 	isort test_game_of_life.py
