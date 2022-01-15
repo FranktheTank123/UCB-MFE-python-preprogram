@@ -10,10 +10,12 @@ def evolve(initial_state):
                 for c in range(max(col - 1, 0), min(col + 1, n_cols - 1) + 1):
                     n_live_neighbors += initial_state[r][c]
 
+            # Any dead cell with 3 live neighbors becomes alive
             if initial_state[row][col] == 0 and n_live_neighbors == 3:
-                subsequent_state[row][col] = 1  # Any dead cell with 3 live neighbors becomes alive
+                subsequent_state[row][col] = 1
+            # Any live cell with 2 or 3 live neighbors survives
             elif initial_state[row][col] == 1 and n_live_neighbors in [3, 4]:
-                subsequent_state[row][col] = 1  # Any live cell with 2 or 3 live neighbors survives
+                subsequent_state[row][col] = 1
 
     return subsequent_state
 
@@ -50,6 +52,3 @@ def test_1():
 def test_2():
     assert evolve(test_case_2) == test_case_2_next
     pass
-
-# assert evolve(test_case_1) == test_case_1
-# assert evolve(test_case_2) == test_case_2_next
