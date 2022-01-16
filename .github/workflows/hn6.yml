@@ -1,0 +1,21 @@
+name: HW6
+on:
+  pull_request:
+    paths:
+      - 'Homeworks/HW6/**'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2  # https://github.com/actions/checkout
+      - name: install python
+        uses: actions/setup-python@v2  # https://github.com/actions/setup-python
+        with:
+          python-version: '3.10'  # this is aligned with Lecture 5
+      - name: install dependency
+        run: cd Lectures/Lecture\ 6/code && pip install -r requiremenets.txt
+
+      - name: test check
+        # note that `pwd` gets reset each time
+        run: cd Homeworks/HW6 && make lint-check && make test
