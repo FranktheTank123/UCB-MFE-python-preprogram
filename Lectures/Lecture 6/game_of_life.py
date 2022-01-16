@@ -54,8 +54,6 @@ test_case_2_next = [
     [0, 0, 0, 0, 0],
 ]
 
-assert evolve(test_case_1) == test_case_1
-assert evolve(test_case_2) == test_case_2_next
 
 def test_evolve():
     assert evolve(test_case_1) == test_case_1
