@@ -1,5 +1,0 @@
-conda create -n HW1 python=3.10
-pip install -r requirements.txt
-pip install --upgrade requests==2.24.0
-pip install --upgrade requests
-2.26.0
