@@ -1,12 +1,12 @@
 lint:
-	black test.py
-	isort test.py
-	flake8 test.py
-
-test:
-	pytest .
+	black test_game_of_life.py
+	isort test_game_of_life.py
+	flake8 test_game_of_life.py
 
 lint-check:
 	black . --check
 	isort . --check
 	flake8 .
+
+test:
+	pytest .
