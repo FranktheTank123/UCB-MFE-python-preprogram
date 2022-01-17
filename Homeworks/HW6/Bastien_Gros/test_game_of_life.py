@@ -1,16 +1,16 @@
-import numpy as np
-
-
 def evolve(initial_state):
     # First we generate the check matrix C we will loop on
     # With 2 more columns and 2 more lines to avoid non definition issues
-    c = np.zeros((len(initial_state[0]) + 2, len(initial_state) + 2))
+    n1 = len(initial_state[0])
+    n2 = len(initial_state)
+    c = [([0] * (n1 + 2)) for _ in range(n2 + 2)]
+
     for i in range(1, len(initial_state) + 1):
         for j in range(1, len(initial_state[0]) + 1):
             c[i][j] = initial_state[i - 1][j - 1]
 
     # Now we build the neighbor matrix using the check matrix built
-    n = [([0] * len(initial_state[0])) for _ in range(len(initial_state))]
+    n = [([0] * n1) for _ in range(n2)]
     for i in range(1, len(initial_state) + 1):
         for j in range(1, len(initial_state[0]) + 1):
             n[i - 1][j - 1] = (
@@ -25,10 +25,10 @@ def evolve(initial_state):
             )
 
     # Finally, we compute the evolution with the specific conditions
-    e = [([0] * len(initial_state[0])) for _ in range(len(initial_state))]
+    e = [([0] * n1) for _ in range(n2)]
 
-    for i in range(len(initial_state)):
-        for j in range(len(initial_state[0])):
+    for i in range(n2):
+        for j in range(n1):
             if initial_state[i][j] == 1:
                 # For a living cell
                 if n[i][j] == 2 or n[i][j] == 3:
