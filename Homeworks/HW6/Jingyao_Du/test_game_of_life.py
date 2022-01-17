@@ -1,11 +1,21 @@
-from unittest import mock
+# from unittest import mock
 
 import pytest
 
+
 def evolve(initial_state):
     rows, cols = len(initial_state), len(initial_state[0])
-    evolve_result = [ [ 0 for i in range(rows) ] for j in range(cols) ]
-    cell_position = [(-1,0), (1,0), (0,1), (0,-1), (-1,1),  (1,-1), (1,1), (-1,-1),]
+    evolve_result = [[0 for i in range(rows)] for j in range(cols)]
+    cell_position = [
+        (-1, 0),
+        (1, 0),
+        (0, 1),
+        (0, -1),
+        (-1, 1),
+        (1, -1),
+        (1, 1),
+        (-1, -1),
+    ]
     for i in range(rows):
         for j in range(cols):
             living_cells = 0
@@ -16,13 +26,13 @@ def evolve(initial_state):
                     continue
                 elif initial_state[m][n] == 1:
                     living_cells += 1
-                     
+
             if initial_state[i][j] == 1:
                 if 2 <= living_cells <= 3:
                     evolve_result[i][j] = 1
                 else:
                     evolve_result[i][j] = 0
-                
+
             if initial_state[i][j] == 0:
                 if living_cells == 3:
                     evolve_result[i][j] = 1
@@ -60,6 +70,8 @@ assert evolve(test_case_1) == test_case_1
 assert evolve(test_case_2) == test_case_2_next
 
 
-@pytest.mark.parametrize("i,o",[(test_case_1, test_case_1),(test_case_2, test_case_2_next)])
+@pytest.mark.parametrize(
+    "i,o", [(test_case_1, test_case_1), (test_case_2, test_case_2_next)]
+)
 def test_cases(i, o):
-    assert evolve(i)== o
+    assert evolve(i) == o
