@@ -1,0 +1,49 @@
+name: Serious Actions With Docker
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '!*'
+  pull_request:
+    paths:
+      - '!*'
+#      - 'Lectures/Lecture 6/**'
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2  # https://github.com/actions/checkout
+
+#   we don't even need python!
+#      - name: install python
+#        uses: actions/setup-python@v2  # https://github.com/actions/setup-python
+#        with:
+#          python-version: '3.10'  # this is aligned with Lecture 5
+
+      - name: lint check with docker
+        run: |
+          cd Lectures/Lecture\ 6
+          docker build . -t test
+          docker run  test make lint-check
+
+  unit-test:
+    runs-on: ubuntu-latest
+    needs: [lint-test]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2  # https://github.com/actions/checkout
+
+      - name: lint check with docker
+        run: |
+          cd Lectures/Lecture\ 6
+          docker build . -t test
+          docker run  test make test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [lint-test, unit-test]
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    steps:
+        - run: echo "deploy!"
+
