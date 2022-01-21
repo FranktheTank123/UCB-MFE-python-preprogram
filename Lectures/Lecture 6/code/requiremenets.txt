@@ -2,4 +2,3 @@ flake8
 black
 isort
 pytest
-numpy
