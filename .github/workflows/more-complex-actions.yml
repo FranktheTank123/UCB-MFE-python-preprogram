@@ -1,0 +1,30 @@
+name: GitHub Actions Demo 2
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - '!*'
+  pull_request:
+    paths:
+      - '!*'
+jobs:
+  step-1:
+    runs-on: ubuntu-latest  # https://docs.github.com/en/actions/learn-github-actions/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    steps:
+      - run: echo "this is step 1"
+  step-2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "this is step 2, but this one will fail"
+      - run: exit 1
+  step-3:
+    runs-on: ubuntu-latest
+    needs: [step-1, step-2]
+    steps:
+      - run: echo "this is step 3, this one will only run when step-1 and step-2 succeed"
+  step-4:
+    runs-on: ubuntu-latest
+    # pull request will not trigger this
+    if: github.ref == 'refs/heads/master' && github.event_name != 'pull_request'
+    steps:
+      - run: echo "this is step 4"
