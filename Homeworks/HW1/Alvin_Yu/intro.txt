@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+Alvin Yu, Avengers: End Game
+=======
 Alvin Yu, Avengers: End Game
 
 conda create -n HW1 python=3.10
@@ -7,3 +10,4 @@ pip install requests==2.24.0
 pip install requests -U
 
 #The latest version of requests is at 2.26.0
+>>>>>>> 0357bf9a9c7bec6dd8a1477d6457d4705f5043ac
