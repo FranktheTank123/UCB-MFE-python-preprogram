@@ -19,5 +19,5 @@ Clear button was included to clear the results displayed on the page.
 
 ![20220225-162450_capture](https://user-images.githubusercontent.com/24922489/155811357-c6fa676f-2d6e-47c8-921c-0cc157bedd2d.gif)
 
-Given the size constraints for github, training data and trained model file is not included. For training data, please refer to https://www.kaggle.com/andrewmvd/animal-faces.
+Given the size constraints for github, training data file is not included. For training data, please refer to https://www.kaggle.com/andrewmvd/animal-faces.
 
