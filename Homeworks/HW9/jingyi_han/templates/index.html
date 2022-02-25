@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<script>
+	     //"use strict";
+
+	    function ClearFields() {
+	        var resultElement = document.getElementById('result');
+	        resultElement.innerHTML = '';
+	    }
+    </script>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+        <h1>Animal Face Recognition App</h1>
+        <p>Upload your face below and click submit to find out...</p>
+
+        <form method="POST" action="/result" enctype="multipart/form-data">
+	        <dl>
+	            <p>
+	                <input type="file" name="img_file" class="form-control" autocomplete="off" required>
+	            </p>
+	        </dl>
+	        <p>
+	            <input type="submit" value="Submit" class="btn btn-info";">
+	            <input type="button" value="Clear" class="btn btn-info" onclick="ClearFields()">
+	        </p>
+
+    	</form>
+
+    	<div id = "result">
+    		{% if animal %}
+    	    <img src="{{img_path}}" height="300">
+	    	<h2> This looks like a <i> {{animal | safe}}</i>!</h2>
+			<h4> Check the probabilities of possible other animals that this face looks alike:</i></h4>
+	        <canvas id="pieChart" width="800" height="500" align="left"></canvas>
+	    	<script>
+
+	    	const types = {{label | safe}}
+	    	const backgroundcolor = [];
+	    	for (i = 0; i < types.length; i++){
+	    		const r = Math.floor(Math.min(255 - Math.random() * 150, 255))
+	    		const g = Math.floor(Math.min(210 - Math.random() * 150, 255))
+	    		const b = Math.floor(Math.min(133 - Math.random() * 150, 255))
+	    		backgroundcolor.push('rgba('+r+", "+g+", "+b+", 0.6)")
+	    	}
+			const ctx = document.getElementById("pieChart").getContext("2d");
+			const pieChart = new Chart(ctx, {
+				type: "doughnut",
+				data: {
+					label: 'Prediction Probability',
+					labels: {{label | safe}},
+					datasets: [{
+						data: {{pred | safe}},
+						backgroundColor: backgroundcolor
+					}]
+				},
+				options: {responsive: false}
+			});
+	    	</script>
+	    	{% endif %}
+		</div>
+      	
+    </div>
+{% endblock %}
+
+
+        
