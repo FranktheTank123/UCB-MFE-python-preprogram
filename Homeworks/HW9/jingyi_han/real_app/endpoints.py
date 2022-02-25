@@ -1,12 +1,18 @@
 import json
 import os
+import sys
 
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+sys.path.append(parent)
+
 from model_definition import labels, mdl_predict
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder=parent+'/templates', 
+    static_folder = parent+'/static')
 
 UPLOAD_FOLDER = "static/uploads/"
 
@@ -33,7 +39,7 @@ def get_output():
         animal = ""
         img_path = ""
         img = request.files["img_file"]
-        # print(allowed_file(img.filename))
+
         if allowed_file(img.filename):
             filename = secure_filename(img.filename)
             img_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)

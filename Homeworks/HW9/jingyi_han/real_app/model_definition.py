@@ -1,10 +1,15 @@
 import pickle
+import os
+import sys
 
 import numpy as np
 from skimage.io import imread
 from skimage.transform import resize
 
-loaded_model = pickle.load(open("model.pkl", "rb"))
+current = os.path.dirname(os.path.realpath(__file__))
+parent = os.path.dirname(current)
+
+loaded_model = pickle.load(open(parent+"/data/model.pkl", "rb"))
 
 labels = ["cat", "dog", "fox", "leopard", "tiger", "wolf", "cheetah", "lion"]
 
