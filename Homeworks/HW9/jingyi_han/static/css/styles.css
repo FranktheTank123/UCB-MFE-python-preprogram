@@ -1,0 +1,35 @@
+body {
+  background-color: lightgray;
+}
+h1 {
+  color: dimgrey;
+}
+p {
+  color: dimgrey;
+}
+.button {
+  background-color: dimgrey;
+  border: none;
+  color: white;
+  padding: 6px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.8s;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+.button1 {
+  background-color: white; 
+  color: dimgrey; 
+  border: 2.5px solid lightgrey;
+}
+
+.button1:hover {
+  background-color: dimgrey;
+  color: white;
+  border: 2.5px solid dimgrey;
+}
