@@ -1,0 +1,9 @@
+# Jupyter lab
+jupyterlab>=3.2.4
+
+# Base installation
+pandas>=1.3.4
+matplotlib>=3.5.0
+
+# Advanced packages
+papermill>=2.3.3
