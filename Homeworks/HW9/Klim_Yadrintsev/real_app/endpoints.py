@@ -9,7 +9,8 @@ def creat_app():
     app.model = pickle.load(open('/Volumes/ExtremePro/Coding/pre-program/python-pre/UCB-MFE-python-preprogram/Homeworks/HW9/Klim_Yadrintsev/data/best_model_students.pkl', 'rb'))
     # this is not the best way to do it
     # app.data = X
-    app.data, _ = pd.read_csv('/Volumes/ExtremePro/Coding/pre-program/python-pre/UCB-MFE-python-preprogram/Homeworks/HW9/Klim_Yadrintsev/data/student_prediction.csv')
+    app.data = pd.read_csv('/Volumes/ExtremePro/Coding/pre-program/python-pre/UCB-MFE-python-preprogram/Homeworks/HW9/Klim_Yadrintsev/data/student_prediction.csv')
+    app.data = app.data.drop('STUDENTID', axis=1)
     return app
 
 
@@ -27,12 +28,12 @@ def ping():
 
 
 @app.route("/<string:student_id>")
-def predict_rel_sol(student_id: int):
+def predict_rel_sol(student_id: str):
     # time stamp should be of the form: "2021-11-01 00:00:00"
     grade = app.model.predict(
-        app.data.loc[student_id].to_frame().T
+        app.data.iloc[int(student_id)].to_frame().T
     )[0]
-    return {"grade": grade}
+    return {"grade": int(grade)}
 
 
 if __name__ == '__main__':
