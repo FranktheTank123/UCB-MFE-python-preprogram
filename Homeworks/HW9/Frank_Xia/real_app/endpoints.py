@@ -1,25 +1,30 @@
 import pickle
 
-from flask import Flask
+from flask import Flask, url_for
 from model_training import preping_data
+import os
+from flask import send_from_directory
+
+
 
 
 def creat_app():
     app = Flask(__name__)
-    app.model = pickle.load(open('/Users/tianyixia/dev/UCB-MFE-python-preprogram/data/trained_model.pckl', 'rb'))
+    app.model = pickle.load(open('/Users/campo/Desktop/MFEpython/Homeworks/HW9/Frank_Xia/data/trained_model.pckl', 'rb'))
     # this is not the best way to do it
     # app.data = X
-    app.data, _ = preping_data('sqlite:////Users/tianyixia/dev/UCB-MFE-python-preprogram/data/data.db')
+    app.data, _ = preping_data('sqlite:////Users/campo/Desktop/MFEpython/Homeworks/HW9/Frank_Xia/data/data.db')
     return app
 
 
 app = creat_app()
 
 
-@app.route("/")
+@app.route('/')
+                               
 def hello_world():
     return "<p>Hello, World!</p>"
-
+    
 
 @app.route("/health_check")
 def ping():
