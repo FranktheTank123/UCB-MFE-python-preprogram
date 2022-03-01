@@ -16,7 +16,11 @@ pipeline = Pipeline([
     ('model', Ridge())
 ])
 
-
+import pickle
+from flask import Flask
+app = Flask(__name__)
+app.model = pickle.load(open('/Users/campo/Desktop/MFEpython/Homeworks/HW9/Frank_Xia/data/trained_model.pckl', 'rb'))
+print (app.model)
 
 
 

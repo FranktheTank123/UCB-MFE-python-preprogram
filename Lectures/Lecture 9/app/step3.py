@@ -14,7 +14,7 @@ app = creat_app()
 # ========================================
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    return "<head><link rel='shortcut icon' href='#'></head><p>Hello, World!</p>"
 
 
 @app.route('/boo')

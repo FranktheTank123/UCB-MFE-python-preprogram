@@ -36,7 +36,7 @@ def vol_ohlc(df, lookback=10):
 
 
 # this is just copying from Lecture 8's notebook
-def preping_data(data_location) -> tuple[pd.DataFrame, pd.Series]:
+def preping_data(data_location): #-> tuple[pd.DataFrame, pd.Series]:
     # this should be a global variable
     # data_location = 'sqlite:////Users/tianyixia/dev/UCB-MFE-python-preprogram/data/data.db'
     ohlc = pd.read_sql('SELECT * FROM ohlc', data_location)
