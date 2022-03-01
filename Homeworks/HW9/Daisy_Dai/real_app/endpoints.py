@@ -18,10 +18,12 @@ app = creat_app()
 
 
 
-@app.route("/<np.ndarray:features>")
-def predict_iris(features: np.ndarray):
-    # the input should be a numpy array of 4 numbers
-    y_pred = round(app.model.predict(features)[0])
+@app.route("/<string:features>")
+def predict_iris(features: str):
+    # the input should be a string composed of four numbers
+    # i.e. '3 4 5 6'
+    x = np.fromstring(features, dtype=float, sep=' ').reshape(1,-1)
+    y_pred = round(app.model.predict(x)[0])
     classification = ['setosa', 'versicolor', 'virginica']
     iris_type = classification[y_pred]
     return {"iris_type": iris_type}
