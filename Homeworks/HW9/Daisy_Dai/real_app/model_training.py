@@ -1,6 +1,5 @@
 import pandas as pd
 import pickle
-import click
 from sklearn.utils import shuffle
 from sklearn.model_selection import GridSearchCV
 
@@ -15,9 +14,8 @@ def prep_data(data_path):
     
     return x,y, names
 
-@click.command()
-@click.option('--data_path')
-@click.option('--model_path')
+data_path = 'C:/Users/15103/OneDrive/Desktop/UCB-MFE-python-preprogram/Homeworks/HW9/Daisy_Dai/data/iris_data.pckl'
+model_path = 'C:/Users/15103/OneDrive/Desktop/UCB-MFE-python-preprogram/Homeworks/HW9/Daisy_Dai/data/trained_model.pckl'
 
 def main(data_path, model_path):
     assert data_path and model_path, "need to provide valid data path and model path"
@@ -27,8 +25,8 @@ def main(data_path, model_path):
     
 
     search = GridSearchCV(pipeline, {
-        'n_neighbors': [8, 9, 10, 11, 12, 13, 14, 15],
-        'p':[1,2]
+        'knn__n_neighbors': [8, 9, 10, 11, 12, 13, 14, 15],
+        'knn__p':[1,2]
     }, scoring='accuracy', refit=True, n_jobs=-1)
     
     search.fit(x, y)
@@ -39,7 +37,8 @@ def main(data_path, model_path):
     pickle.dump(best_model, open(model_path, 'wb'))
 
 if __name__ == '__main__':
-    main()
+    main(data_path, model_path) 
+    
 
 
 
