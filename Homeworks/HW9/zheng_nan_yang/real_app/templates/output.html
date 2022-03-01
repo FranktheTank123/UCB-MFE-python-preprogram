@@ -1,0 +1,5 @@
+<h2>Predicted Wine Quality Rating (Good/Bad): {{ output }}</h2>
+<h3>Input Wine Characteristics</h3>
+{% for key,value in form_data.items() %}
+<p>{{key}} :{{value}}</p>
+{% endfor %}
