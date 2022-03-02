@@ -1,0 +1,4 @@
+python real_app/model_training.py --data-path /d/MFE/Python/Session9/Homework/UCB-MFE-python-preprogram/Homeworks/HW9/Jianhao_Cai/data/data.xlsx  --model-path /d/MFE/Python/Session9/Homework/UCB-MFE-python-preprogram/Homeworks/HW9/Jianhao_Cai/data/train_model.pckl
+
+
+FLASK_ENV=development python real_app/endpoints.py
