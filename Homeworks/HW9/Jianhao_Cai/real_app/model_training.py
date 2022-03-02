@@ -1,9 +1,10 @@
-import pandas as pd
-import numpy as np
-from sklearn.model_selection import GridSearchCV
 import pickle
+
 import click
+import numpy as np
+import pandas as pd
 from model_definition import pipeline
+from sklearn.model_selection import GridSearchCV
 
 
 def prepare_data(data_location) -> tuple[pd.DataFrame, pd.Series, dict]:
@@ -22,17 +23,22 @@ def prepare_data(data_location) -> tuple[pd.DataFrame, pd.Series, dict]:
 def main(data_path, model_path):
     X, y, _ = prepare_data(data_location=data_path)
     print(f"preparing data complete, X: {X.shape} y: {y.shape}")
-    
-    search = GridSearchCV(pipeline, {
-        'pca__n_components': [1, 2, 3, 5, 6, 8, 10, 12],
-        'model__C': np.arange(0.1, 1.1, 0.1)
-        }, scoring="accuracy", refit=True, cv=10, n_jobs=-1)
+    search = GridSearchCV(
+        pipeline,
+        {
+            "pca__n_components": [1, 2, 3, 5, 6, 8, 10, 12],
+            "model__C": np.arange(0.1, 1.1, 0.1),
+        },
+        scoring="accuracy",
+        refit=True,
+        cv=10,
+        n_jobs=-1,
+    )
     search.fit(X, y)
     best_model = search.best_estimator_
     print(f"model training done. Best params: {search.best_params_}")
+    pickle.dump(best_model, open(model_path, "wb"))
 
-    pickle.dump(best_model, open(model_path, 'wb'))
-    
-    
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()

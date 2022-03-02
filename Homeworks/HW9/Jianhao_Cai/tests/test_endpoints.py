@@ -10,10 +10,10 @@ def client():
 
 
 def test_hello(client):
-    rv = client.get('/')
-    assert 'Hello!' in str(rv.data)  # rv.data are bytes
+    rv = client.get("/")
+    assert "Hello!" in str(rv.data)
 
 
 def test_predict(client):
-    rv = client.get('/predict-0')
-    assert 'Cercevelik' in str(rv.data)
+    rv = client.get("/predict-0")
+    assert ("Cercevelik" in str(rv.data)) or ("UrgupSivrisi" in str(rv.data))
