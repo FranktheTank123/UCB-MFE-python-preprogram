@@ -1,0 +1,68 @@
+Ruitong Xiao Fav-Movie: Harry Potter
+(base) xiaotong@xiaotongdeMBP Ruitong_Xiao % conda create -n HW1 python=3.10
+Collecting package metadata (current_repodata.json): done
+Solving environment: done
+
+
+==> WARNING: A newer version of conda exists. <==
+  current version: 4.10.3
+  latest version: 4.11.0
+
+Please update conda by running
+
+    $ conda update -n base -c defaults conda
+
+
+
+## Package Plan ##
+
+  environment location: /Users/xiaotong/opt/anaconda3/envs/HW1
+
+  added / updated specs:
+    - python=3.10
+
+
+The following NEW packages will be INSTALLED:
+
+  bzip2              pkgs/main/osx-64::bzip2-1.0.8-h1de35cc_0
+  ca-certificates    pkgs/main/osx-64::ca-certificates-2021.10.26-hecd8cb5_2
+  certifi            pkgs/main/noarch::certifi-2020.6.20-pyhd3eb1b0_3
+  libcxx             pkgs/main/osx-64::libcxx-12.0.0-h2f01273_0
+  libffi             pkgs/main/osx-64::libffi-3.3-hb1e8313_2
+  ncurses            pkgs/main/osx-64::ncurses-6.3-hca72f7f_2
+  openssl            pkgs/main/osx-64::openssl-1.1.1l-h9ed2024_0
+  pip                pkgs/main/osx-64::pip-21.2.4-py310hecd8cb5_0
+  python             pkgs/main/osx-64::python-3.10.0-hdfd78df_3
+  readline           pkgs/main/osx-64::readline-8.1-h9ed2024_0
+  setuptools         pkgs/main/osx-64::setuptools-58.0.4-py310hecd8cb5_0
+  sqlite             pkgs/main/osx-64::sqlite-3.36.0-hce871da_0
+  tk                 pkgs/main/osx-64::tk-8.6.11-h7bc2e8c_0
+  tzdata             pkgs/main/noarch::tzdata-2021e-hda174b7_0
+  wheel              pkgs/main/noarch::wheel-0.37.0-pyhd3eb1b0_1
+  xz                 pkgs/main/osx-64::xz-5.2.5-h1de35cc_0
+  zlib               pkgs/main/osx-64::zlib-1.2.11-h1de35cc_3
+
+
+Proceed ([y]/n)? 
+
+Preparing transaction: done
+Verifying transaction: done
+Executing transaction: | 
+/ 
+done
+#
+# To activate this environment, use
+#
+#     $ conda activate HW1
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+(base) xiaotong@xiaotongdeMBP HW1 % pip install -r requirements.txt
+(base) xiaotong@xiaotongdeMBP HW1 % pip list
+
+(base) xiaotong@xiaotongdeMBP HW1 % pip install requests==2.24.0
+(base) xiaotong@xiaotongdeMBP HW1 % pip install requests -U
+Last version: 2.26.0
+
