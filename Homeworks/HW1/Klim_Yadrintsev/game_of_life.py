@@ -26,7 +26,6 @@ def evolve(initial_state):
 
     # point = initial_state[1][1]
 
-    print('pass')
 
 
     for i in range(count_list):
@@ -52,8 +51,6 @@ def evolve(initial_state):
                     else:
                         if sum_total == 3:
                             board[i][n] = 1
-                        else:
-                            pass
 
     return board
 
