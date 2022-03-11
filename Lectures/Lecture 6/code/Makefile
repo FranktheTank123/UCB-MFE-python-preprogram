@@ -1,9 +1,3 @@
-lint-check:
-	black test.py --check
-	isort test.py --check
-	flake8 test.py
-
-
 lint:
 	black test.py
 	isort test.py
@@ -12,3 +6,9 @@ lint:
 
 test:
 	pytest test.py
+
+
+lint-check:
+	black test.py --check
+	isort test.py --check
+	flake8 test.py
