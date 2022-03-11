@@ -28,7 +28,7 @@ def ping():
 
 
 @app.route("/<string:student_id>")
-def predict_rel_sol(student_id: str):
+def predict_rel_student(student_id: str):
     # time stamp should be of the form: "2021-11-01 00:00:00"
     grade = app.model.predict(
         app.data.iloc[int(student_id)].to_frame().T
