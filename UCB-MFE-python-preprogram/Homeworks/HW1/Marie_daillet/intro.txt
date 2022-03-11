@@ -1,0 +1,18 @@
+Marie Daillet hw1: answers to questions:
+
+#How to create a virtual environment called 'HW1' with Python 3.10:
+Conda create -n HW1 python=3.10
+
+#When asked if we want to install the packages:
+Type "y"
+
+#We now install the package with the requirement file
+pip install -r requirements.txt
+
+#To downgrade the version we simply type:
+pip install requests==2.24
+
+#To update to the latest version we type
+pip install requests -U
+
+#The latest version of requests is 2.26.0
