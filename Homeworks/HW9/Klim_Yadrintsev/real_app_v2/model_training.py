@@ -51,8 +51,8 @@ def PercentError(preds, ytest):
 
 
 
-@click.command()
-@click.option('--data-path')
+# @click.command()
+# @click.option('--data-path')
 def main(data_path):
     assert data_path, "need to provide valid data path and model path"
 
@@ -101,7 +101,7 @@ def main(data_path):
     ytest = ytest.astype('float')
 
     # pickle.dump(best_model, open('/Users/tianyixia/dev/UCB-MFE-python-preprogram/data/trained_model.pckl', 'wb'))
-    pickle.dump(model, open('../data_v2/model.pkl', 'wb'))
+    pickle.dump(model, open('E:/programming/python/UCB-MFE-python-preprogram/Homeworks/HW9/Klim_Yadrintsev/data_v2/model.pkl', 'wb'))
 
 
 if __name__ == '__main__':

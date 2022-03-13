@@ -1,19 +1,15 @@
 import pickle
 import pandas as pd
+from model_training import preping_data
 
 from flask import Flask
 
 
 def creat_app():
     app = Flask(__name__)
-    app.model = pickle.load(open('/Volumes/ExtremePro/Coding/pre-program/python-pre/UCB-MFE-python-preprogram/Homeworks/HW9/Klim_Yadrintsev/data/best_model_students.pkl', 'rb'))
-    # this is not the best way to do it
-    # app.data = X
-    data_location = 'sqlite:///../data_v2/avocado.db'
-    data = pd.read_sql('SELECT * FROM avocado', data_location)
-    data = data.iloc[:, 1:]
-    y = data.AveragePrice
-    data.drop(['AveragePrice'], axis=1, inplace=True)
+    app.model = pickle.load(open('data_v2/model.pkl', 'rb'))
+    data_location = 'sqlite:///data_v2/avocado.db'
+    app.data, _ = preping_data(data_location)
     return app
 
 
@@ -30,13 +26,13 @@ def ping():
     return "pong"
 
 
-@app.route("/<string:student_id>")
-def predict_rel_student(student_id: str):
+@app.route("/<time_stamp>")
+def predict_price_avc(time_stamp):
     # time stamp should be of the form: "2021-11-01 00:00:00"
-    grade = app.model.predict(
-        app.data.iloc[int(student_id)].to_frame().T
+    price = app.model.predict(
+        app.data.loc[time_stamp].to_frame().T
     )[0]
-    return {"grade": int(grade)}
+    return {"price": price}
 
 
 if __name__ == '__main__':
