@@ -41,3 +41,4 @@ def predict_rel_student(student_id: str):
 
 if __name__ == '__main__':
     app.run("localhost", port=5000)
+
