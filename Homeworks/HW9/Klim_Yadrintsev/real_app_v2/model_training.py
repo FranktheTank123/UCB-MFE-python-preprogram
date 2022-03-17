@@ -36,7 +36,6 @@ def preping_data(data_location) -> tuple[pd.DataFrame, pd.Series]:
         {'Date': 'object', 'Total Volume': 'float64', '4046': 'float64', '4225': 'float64', '4770': 'float64',
          'Total Bags': 'float64', 'Small Bags': 'float64', 'Large Bags': 'float64', 'XLarge Bags': 'float64',
          'type': 'object', 'year': 'int', 'region': 'object'})
-    data.set_index('Date', inplace=True)
     X = data
 
     return X, y
@@ -48,6 +47,46 @@ def PercentError(preds, ytest):
     errorp = np.mean(100 - 100 * (error / ytest))
 
     print('the accuracy is:', errorp)
+
+
+def data_prep_prediction(data_path):
+    assert data_path, "need to provide valid data path and model path"
+
+    X, y = preping_data(data_location=data_path)
+    print(f"preping data complete, X: {X.shape} y: {y.shape}")
+
+    test_size = 0.2
+    trainflights, testflights, ytrain, ytest = train_test_split(X, y, train_size=0.7, test_size=0.3, random_state=0)
+    s = (trainflights.dtypes == 'object')
+    object_cols = list(s[s].index)
+
+    n = (trainflights.dtypes == ('float64', 'int64'))
+    numerical_cols = list(n[n].index)
+    oneHot = OneHotEncoder(handle_unknown='ignore', sparse=False)
+    oneHottrain = pd.DataFrame(oneHot.fit_transform(trainflights[object_cols]))
+    oneHottest = pd.DataFrame(oneHot.transform(testflights[object_cols]))
+
+    # reattaching index since OneHotEncoder removes them:
+    oneHottrain.index = trainflights.index
+    oneHottest.index = testflights.index
+
+    # dropping the old categorical columns:
+    cattraincol = trainflights.drop(object_cols, axis=1)
+    cattestcol = testflights.drop(object_cols, axis=1)
+
+    # concatenating the new columns:
+    trainflights = pd.concat([cattraincol, oneHottrain], axis=1)
+    testflights = pd.concat([cattestcol, oneHottest], axis=1)
+
+    trainf = trainflights.values
+    testf = testflights.values
+
+    minmax = MinMaxScaler()
+
+    trainflights = minmax.fit_transform(trainf)
+    testflights = minmax.transform(testf)
+
+    return trainflights, testflights
 
 
 
