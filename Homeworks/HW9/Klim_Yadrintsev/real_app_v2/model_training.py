@@ -36,6 +36,7 @@ def preping_data(data_location) -> tuple[pd.DataFrame, pd.Series]:
         {'Date': 'object', 'Total Volume': 'float64', '4046': 'float64', '4225': 'float64', '4770': 'float64',
          'Total Bags': 'float64', 'Small Bags': 'float64', 'Large Bags': 'float64', 'XLarge Bags': 'float64',
          'type': 'object', 'year': 'int', 'region': 'object'})
+    data.set_index('Date', inplace=True)
     X = data
 
     return X, y

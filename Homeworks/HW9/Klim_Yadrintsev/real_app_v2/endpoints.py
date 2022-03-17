@@ -26,13 +26,22 @@ def ping():
     return "pong"
 
 
-@app.route("/<time_stamp>")
-def predict_price_avc(time_stamp):
+@app.route("/<string:time_stamp>-<string:region>")
+def predict_price_avc(time_stamp: str, region: str):
     # time stamp should be of the form: "2021-11-01 00:00:00"
+
+    datacl = app.data[app.data.Date == '2015-12-06']
+    datacll = datacl[datacl.region == 'Albany'].where(datacl.type == 'conventional').dropna()
+
     price = app.model.predict(
         app.data.loc[time_stamp].to_frame().T
     )[0]
     return {"price": price}
+
+    # price = app.model.predict(
+    #     app.data.loc[time_stamp].to_frame().T
+    # )[0]
+    # return {"price": price}
 
 
 if __name__ == '__main__':
