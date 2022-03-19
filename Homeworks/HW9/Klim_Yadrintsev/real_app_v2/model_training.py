@@ -86,7 +86,7 @@ def data_prep_prediction(data_path):
     trainflights = minmax.fit_transform(trainf)
     testflights = minmax.transform(testf)
 
-    return trainflights, testflights
+    return trainflights, testflights, ytrain, ytest
 
 
 
