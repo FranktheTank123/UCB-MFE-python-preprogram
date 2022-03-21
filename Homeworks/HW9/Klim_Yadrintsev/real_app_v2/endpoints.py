@@ -1,6 +1,7 @@
 import pickle
 import pandas as pd
 from model_training import preping_data
+from model_training import data_prep_prediction
 
 from flask import Flask
 
@@ -32,9 +33,10 @@ def predict_price_avc(time_stamp: str, region: str, type_of: str):
 
     datacl = app.data[app.data.Date == time_stamp]
     datacll = datacl[datacl.region == region].where(datacl.type == type_of).dropna()
+    fitted_datacll = data_prep_prediction('sqlite:///data_v2/avocado.db').oneHot.transform(datacll)
 
     price = app.model.predict(
-        datacll
+        fitted_datacll
     )[0]
     return {"price": price}
 
