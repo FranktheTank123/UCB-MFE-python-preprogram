@@ -33,7 +33,7 @@ def predict_price_avc(time_stamp: str, region: str, type_of: str):
 
     datacl = app.data[app.data.Date == time_stamp]
     datacll = datacl[datacl.region == region].where(datacl.type == type_of).dropna()
-    fitted_datacll = data_prep_prediction('sqlite:///data_v2/avocado.db').oneHot.transform(datacll)
+    fitted_datacll = [data_prep_prediction('sqlite:///data_v2/avocado.db').testflights[datacll.index[0]]]
 
     price = app.model.predict(
         fitted_datacll
